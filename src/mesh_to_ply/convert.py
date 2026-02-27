@@ -4,7 +4,7 @@ import numpy as np
 
 def convert(in_path, out_path: Path, data_label: str = None) -> None:
     """ 
-    Convert a meshio mesh file (used for .mesh) to .obj
+    Convert a meshio mesh file (used for .mesh) to .ply
     Intended for a tetrahedral mesh with cell data
     
     Inputs
@@ -12,7 +12,7 @@ def convert(in_path, out_path: Path, data_label: str = None) -> None:
     in_path:
         Input mesh path
     out_path:
-        Output .obj path
+        Output .ply path
     """
 
     mesh = meshio.read(in_path)
@@ -39,7 +39,7 @@ def convert(in_path, out_path: Path, data_label: str = None) -> None:
         cells=[("triangle", lut[boundary_faces])]
         )
 
-    meshio.write(out_path, surface_mesh, file_format="obj")
+    meshio.write(out_path, surface_mesh, file_format="ply")
 
 def smallest_uint_type(x: int):
     if x < 0:

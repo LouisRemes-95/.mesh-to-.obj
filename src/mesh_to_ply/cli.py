@@ -1,12 +1,12 @@
 import argparse
 from pathlib import Path
 
-from mesh_to_obj.convert import convert
+from mesh_to_ply.convert import convert
 
 def main():
     parser = argparse.ArgumentParser(
-        prog = ".mesh to .obj", 
-        description = "Convert a .mesh (or other meshio-supported mesh) to .obj",
+        prog = ".mesh to .ply", 
+        description = "Convert a .mesh (or other meshio-supported mesh) to .ply",
     )
     parser.add_argument(
         "input_path",
@@ -22,7 +22,7 @@ def main():
     )
 
     args = parser.parse_args()
-    out_path = args.out if args.out else args.input_path.with_suffix(".obj")
+    out_path = args.out if args.out else args.input_path.with_suffix(".ply")
     convert(args.input_path, out_path)
     print(f"Wrote: {out_path}")
 
